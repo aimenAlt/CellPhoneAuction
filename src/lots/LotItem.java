@@ -1,4 +1,4 @@
-package lotItem;
+package lots;
 
 import date.Date;
 

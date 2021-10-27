@@ -1,4 +1,4 @@
-package offerItem;
+package offers;
 
 public class OfferItem {
 	private int offerId = 0;
@@ -6,11 +6,11 @@ public class OfferItem {
 	private double offerPrice = 0.0;
 	private String offerStatus = "";
 	
-	public OfferItem(int offerId, int lotId, double offerPrice, String offerStatus) {
+	public OfferItem(int offerId, int lotId, double offerPrice) {
 		this.offerId = offerId;
 		this.lotId = lotId;
 		this.offerPrice = offerPrice;
-		this.offerStatus = offerStatus;
+		this.offerStatus = "Pending";
 	}
 	
 	public int getofferId() {

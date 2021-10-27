@@ -2,8 +2,6 @@ package offers;
 
 import java.util.HashMap;
 
-import offerItem.OfferItem;
-
 public interface OffersInterface {
 	
 	HashMap<Integer, OfferItem> getAllOffers();
@@ -14,6 +12,6 @@ public interface OffersInterface {
 	void updateOfferPrice(int offerId, double offerPrice);
 	void updateSingleOfferStatus(int offerId, int offerStatus);
 	void updateOfferStatusOfLot(int lotId, int offerStatus);
-	 
+	
 	
 }
