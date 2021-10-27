@@ -1,6 +1,8 @@
-package offers;
+package Interfaces;
 
 import java.util.HashMap;
+
+import offers.OfferItem;
 
 public interface OffersInterface {
 	

@@ -1,6 +1,8 @@
-package lots;
+package Interfaces;
 
 import java.util.HashMap;
+
+import lots.LotItem;
 
 //import offers.OfferItem;
 
