@@ -1,23 +1,23 @@
 package offers;
 
 public class OfferItem {
-	private int offerId = 0;
-	private int lotId = 0;
+	private String offerId = "";
+	private String lotId = "";
 	private double offerPrice = 0.0;
 	private String offerStatus = "";
 	
-	public OfferItem(int offerId, int lotId, double offerPrice) {
+	public OfferItem(String offerId, String lotId, double offerPrice) {
 		this.offerId = offerId;
 		this.lotId = lotId;
 		this.offerPrice = offerPrice;
 		this.offerStatus = "Pending";
 	}
 	
-	public int getofferId() {
+	public String getofferId() {
 		return this.offerId;
 	}
 	
-	public int getLotId() {
+	public String getLotId() {
 		return this.lotId;
 	}
 	

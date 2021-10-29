@@ -3,13 +3,13 @@ package lots;
 import date.Date;
 
 public class LotItem {
-	private int lotId = 0;
+	private String lotId = "";
 	private String description = "";
 	private double askingPrice = 0.0;
 	private Date endDate;
 	private String lotStatus = "";
 	
-	public LotItem(int lotId, String description, double askingPrice,
+	public LotItem(String lotId, String description, double askingPrice,
 				   Date endDate, String lotStatus) {
 		this.lotId = lotId;
 		this.description = description;
@@ -18,7 +18,7 @@ public class LotItem {
 		this.lotStatus = lotStatus;
 	}
 	//Get
-	public int getLotId() {
+	public String getLotId() {
 		return this.lotId;
 	}
 	
