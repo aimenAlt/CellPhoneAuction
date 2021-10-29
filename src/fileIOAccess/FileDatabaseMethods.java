@@ -38,13 +38,31 @@ public class FileDatabaseMethods {
 	
 	public void setData(HashMap<String, String[]> allData) {
 		BufferedWriter lineWriter = null;
-		boolean writeInNewFile = true;
+		boolean writeInOldFile = false;
 		try {
-			lineWriter = new BufferedWriter(new FileWriter(this.fileAddress, writeInNewFile));//WriteInNewFile boolean is an optional bool parameter whether I want to append or write in new file
+			lineWriter = new BufferedWriter(new FileWriter(this.fileAddress, writeInOldFile));//WriteInOldFile boolean is an optional bool argument whether I want to append or write in new file
 			for (String[] arr : allData.values()) {
 				lineWriter.write(arrayToString(arr));
 				lineWriter.newLine();
 			}
+		} catch(IOException e) {
+	        e.printStackTrace();
+		} finally {
+			try {
+				lineWriter.close();
+			} catch(IOException e) {
+		        e.printStackTrace();
+			}
+		}
+	}
+	
+	public void addSingleEntry(String[] arr) {
+		BufferedWriter lineWriter = null;
+		boolean writeInOldFile = true;
+		try {
+			lineWriter = new BufferedWriter(new FileWriter(this.fileAddress, writeInOldFile));//WriteInOldFile boolean is an optional bool argument whether I want to append or write in new file
+			lineWriter.append(arrayToString(arr));
+			lineWriter.newLine();
 		} catch(IOException e) {
 	        e.printStackTrace();
 		} finally {

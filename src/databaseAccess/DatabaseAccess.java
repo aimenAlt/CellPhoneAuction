@@ -46,7 +46,7 @@ public class DatabaseAccess {
 	
 	public void updateEntries(String[][] newEntries) {
 		for(int i = 0; i < newEntries.length; i++) {
-			this.localDB.push(newEntries[i][0], newEntries[i]);
+			this.localDB.put(newEntries[i][0], newEntries[i]);
 		}
 		this.pushLocal();
 	}
