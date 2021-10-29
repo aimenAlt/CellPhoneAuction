@@ -17,7 +17,7 @@ public class Date {
 		this.day = Integer.parseInt(dateArr[1]);
 		this.year = Integer.parseInt(dateArr[2]);
 	}
-	
+	@Override
 	public String toString() {
 		return this.month + "/" + this.day + "/" + this.year;
 	}
