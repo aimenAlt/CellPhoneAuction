@@ -11,6 +11,13 @@ public class Date {
 		this.year = year;
 	}
 	
+	public Date(String date) {
+		String[] dateArr = date.split("/");
+		this.month = Integer.parseInt(dateArr[0]);
+		this.day = Integer.parseInt(dateArr[1]);
+		this.year = Integer.parseInt(dateArr[2]);
+	}
+	
 	public String toString() {
 		return this.month + "/" + this.day + "/" + this.year;
 	}
