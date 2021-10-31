@@ -10,13 +10,22 @@ public class LotItem {
 	private String lotStatus = "";
 	
 	public LotItem(String lotId, String description, double askingPrice,
-				   Date endDate, String lotStatus) {
+				   Date endDate) {
 		this.lotId = lotId;
 		this.description = description;
 		this.askingPrice = askingPrice;
 		this.endDate = endDate;
-		this.lotStatus = lotStatus;
+		this.lotStatus = "unpublished";
 	}
+	
+	public LotItem(String lotId, String description, double askingPrice,
+			   Date endDate, String lotStatus) {
+	this.lotId = lotId;
+	this.description = description;
+	this.askingPrice = askingPrice;
+	this.endDate = endDate;
+	this.lotStatus = lotStatus;
+}
 	//Get
 	public String getLotId() {
 		return this.lotId;

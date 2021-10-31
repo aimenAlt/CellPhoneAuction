@@ -34,7 +34,7 @@ public class DatabaseAccess {
 		this.pushLocal();
 	}
 	
-	private void deleteEntryLocally(String key) {
+	private void deleteEntryLocally(String key) { // For 
 		this.localDB.remove(key);
 	}
 	

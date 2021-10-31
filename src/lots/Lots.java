@@ -42,34 +42,38 @@ public class Lots implements  LotsInterface{
 	}
 
 	@Override
-	public LotItem addLot(String lotId, String lotDescription, double askingPrice, Date endDate, String lotStatus) {
+	public LotItem addLot(String lotId, String lotDescription, double askingPrice, Date endDate) {
 		// TODO Auto-generated method stub
-		LotItem newLot = new LotItem(lotId, lotDescription, askingPrice, endDate, lotStatus);
-		this.lots.put(lotId, );
+		LotItem newLot = new LotItem(lotId, lotDescription, askingPrice, endDate);
+		this.lots.put(lotId, newLot);
 		return null;
 	}
 
 	@Override
-	public void unpublishLot(String lodId) {
+	public void unpublishLot(String lotId) {
 		// TODO Auto-generated method stub
-		
+		this.lots.get(lotId).setStatus("unpublished");
 	}
 
 	@Override
 	public void openLot(String lotId) {
 		// TODO Auto-generated method stub
+		this.lots.get(lotId).setStatus("open");
 		
 	}
 
 	@Override
 	public void closeLot(String lotId) {
 		// TODO Auto-generated method stub
+		this.lots.get(lotId).setStatus("closed");
+
 		
 	}
 
 	@Override
 	public void endLot(String lotId) {
 		// TODO Auto-generated method stub
+		this.lots.get(lotId).setStatus("ended");
 		
 	}
 	
