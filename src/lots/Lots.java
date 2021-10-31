@@ -2,44 +2,50 @@ package lots;
 
 import java.util.HashMap;
 
+import databaseAccess.DatabaseAccess;
+
 import date.Date;
 import interfaces.LotsInterface;
 
 public class Lots implements  LotsInterface{
 	
-	private HashMap<Integer, LotItem> lots;
+	private HashMap<String, LotItem> lots;
+	private String fileAddress = "../tempDatabase/lots_file.txt"; //Local Database variable
+	private DatabaseAccess lotsDB = null; //Local Database variable
 	
 	public Lots() {
-		this.lots = new HashMap<Integer, LotItem>();
+		this.lots = new HashMap<String, LotItem>();
+		this.lotsDB = new DatabaseAccess(fileAddress); //Local Database 
+		this.getAllDBLots();
+		
 	}
 
 	@Override
-	public HashMap<Integer, LotItem> getAllLots() {
-		// TODO Auto-generated method stub
+	public HashMap<String, LotItem> getAllLots() {
 		return this.lots;
 	}
 
 	@Override
-	public LotItem getSingleLot(int lotId) {
-		// TODO Auto-generated method stub
+	public LotItem getSingleLot(String lotId) {
 		return this.lots.get(lotId);
 	}
 
 	@Override
 	public void deleteLot(String lotId) {
-		// TODO Auto-generated method stub
-		
+		this.lots.remove(lotId);
 	}
 
 	@Override
 	public void updateLotPrice(String lotId, double askingPrice) {
 		// TODO Auto-generated method stub
-		
+		this.lots.get(lotId).setAskingPrice(askingPrice);
 	}
 
 	@Override
-	public LotItem addLot(String lotId, String lotDescription, double askingPrice, Date endDate) {
+	public LotItem addLot(String lotId, String lotDescription, double askingPrice, Date endDate, String lotStatus) {
 		// TODO Auto-generated method stub
+		LotItem newLot = new LotItem(lotId, lotDescription, askingPrice, endDate, lotStatus);
+		this.lots.put(lotId, );
 		return null;
 	}
 
@@ -67,4 +73,25 @@ public class Lots implements  LotsInterface{
 		
 	}
 	
+	public void getAllDBLots() {
+		HashMap<String, String[]> data = this.lotsDB.getDBMap();
+		data.forEach((key, val) -> {
+			this.lots.put(key, new LotItem(val[0], val[1], Double.parseDouble(val[2]), new Date(val[3]), val[4]));
+		});
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,5 +1,6 @@
 package offers;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import interfaces.OffersInterface;
@@ -70,6 +71,12 @@ public class Offers implements OffersInterface {
 	public void acceptOffer(String offerId) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public ArrayList<OfferItem> getCustomerOffers(String customerId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

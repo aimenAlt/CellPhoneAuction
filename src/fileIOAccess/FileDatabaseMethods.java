@@ -20,12 +20,14 @@ public class FileDatabaseMethods {
 			lineReader = new BufferedReader(new FileReader(this.fileAddress));
 			String newLine = "";
 			while((newLine = lineReader.readLine()) != null) {
-				String[] temp = newLine.split("\\|"); //We use // to escape | as a special charecter
+				String[] temp = newLine.split("\\|"); //We use // to escape | as a special character
 				allData.put(temp[0], temp);
 			}
 			
 		} catch(IOException e) {
+			System.out.println("In");
 	        e.printStackTrace();
+			System.out.println("Out");
 		} finally {
 			try {
 				lineReader.close();

@@ -1,6 +1,7 @@
 package interfaces;
 
 import java.util.HashMap;
+import java.util.ArrayList;
 
 import offers.OfferItem;
 
@@ -8,6 +9,7 @@ public interface OffersInterface {
 	
 	HashMap<Integer, OfferItem> getAllOffers();
 	OfferItem getSingleOffer(String offerId);
+	ArrayList<OfferItem> getCustomerOffers(String customerId);
 	OfferItem addOffer (String offerId, String lotId, double offerPrice);
 	void deleteOffer(String offerId);
 	void deleteOffersOfLot(String lotId);

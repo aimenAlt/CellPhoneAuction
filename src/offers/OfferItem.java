@@ -3,12 +3,14 @@ package offers;
 public class OfferItem {
 	private String offerId = "";
 	private String lotId = "";
+	private String customerID = "";
 	private double offerPrice = 0.0;
 	private String offerStatus = "";
 	
-	public OfferItem(String offerId, String lotId, double offerPrice) {
+	public OfferItem(String offerId, String lotId, String customerID, double offerPrice) {
 		this.offerId = offerId;
 		this.lotId = lotId;
+		this.customerID = customerID;
 		this.offerPrice = offerPrice;
 		this.offerStatus = "Pending";
 	}
@@ -36,5 +38,11 @@ public class OfferItem {
 	public void setOfferStatus(String newStatus) {
 		this.offerStatus = newStatus;
 	}
+	
+	public String[] convertToStringArr() {
+		String[] arr = {this.offerId, this.lotId, this.customerID, Double.toString(this.offerPrice), this.offerStatus};
+		return arr;
+	}
+	
 	
 }

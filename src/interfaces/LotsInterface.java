@@ -7,8 +7,8 @@ import lots.LotItem;
 
 public interface LotsInterface {
 	
-	HashMap<Integer, LotItem> getAllLots();
-	LotItem getSingleLot(int LotId);
+	HashMap<String, LotItem> getAllLots();
+	LotItem getSingleLot(String LotId);
 	LotItem addLot (String lotId, String lotDescription, double askingPrice, Date endDate);
 	void deleteLot(String lotId);
 	void updateLotPrice(String offerId, double askingPrice);

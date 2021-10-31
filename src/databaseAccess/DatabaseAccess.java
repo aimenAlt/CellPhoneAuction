@@ -16,6 +16,14 @@ public class DatabaseAccess {
 		this.localDB = this.dataBase.getAllData();
 	}
 	
+	public HashMap<String, String[]> getDBMap() {
+		return this.localDB;
+	}
+	
+	public String[] getEntry(String key) {
+		return this.localDB.get(key);
+	}
+		
 	public void addEntry(String[] data) {
 		this.dataBase.addSingleEntry(data);
 		this.updateLocalDB();

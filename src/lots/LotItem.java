@@ -44,7 +44,7 @@ public class LotItem {
 	}
 	
 	public double setAskingPrice(double newPrice) {
-		
+		this.askingPrice = newPrice;
 		return this.askingPrice;
 	}
 	
