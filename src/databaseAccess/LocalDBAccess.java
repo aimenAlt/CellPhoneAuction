@@ -6,12 +6,12 @@ import java.util.Map;
 import fileIOAccess.FileDatabaseMethods;
 
 
-public class DatabaseAccess {
+public class LocalDBAccess {
 
 	private HashMap<String, String[]> localDB = null;
 	private FileDatabaseMethods dataBase = null;
 	
-	public DatabaseAccess(String fileAddress) {
+	public LocalDBAccess(String fileAddress) {
 		this.dataBase = new FileDatabaseMethods(fileAddress);
 		this.localDB = this.dataBase.getAllData();
 	}

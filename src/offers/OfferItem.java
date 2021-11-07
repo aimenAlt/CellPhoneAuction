@@ -1,30 +1,42 @@
 package offers;
 
 public class OfferItem {
-	private String offerId = "";
-	private String lotId = "";
-	private String customerID = "";
+	private String offerID = "";
+	private String lotID = "";
+	private String clientID = "";
 	private double offerPrice = 0.0;
 	private String offerStatus = "";
 	
-	public OfferItem(String offerId, String lotId, String customerID, double offerPrice) {
-		this.offerId = offerId;
-		this.lotId = lotId;
-		this.customerID = customerID;
+	public OfferItem(String offerID, String lotID, String clientID, double offerPrice) {
+		this.offerID = offerID;
+		this.lotID = lotID;
+		this.clientID = clientID;
 		this.offerPrice = offerPrice;
 		this.offerStatus = "Pending";
 	}
 	
-	public String getofferId() {
-		return this.offerId;
+	public OfferItem(String offerID, String lotID, String clientID, double offerPrice, String offerStatus) {
+		this.offerID = offerID;
+		this.lotID = lotID;
+		this.clientID = clientID;
+		this.offerPrice = offerPrice;
+		this.offerStatus = offerStatus;
 	}
 	
-	public String getLotId() {
-		return this.lotId;
+	public String getOfferID() {
+		return this.offerID;
+	}
+	
+	public String getLotID() {
+		return this.lotID;
 	}
 	
 	public double getOfferPrice() {
 		return this.offerPrice;
+	}
+	
+	public String getClientID() {
+		return this.clientID;
 	}
 	
 	public String offerStatus() {
@@ -39,8 +51,9 @@ public class OfferItem {
 		this.offerStatus = newStatus;
 	}
 	
-	public String[] convertToStringArr() {
-		String[] arr = {this.offerId, this.lotId, this.customerID, Double.toString(this.offerPrice), this.offerStatus};
+	
+	public String[] toStringArr() {
+		String[] arr = {this.offerID, this.lotID, this.clientID, Double.toString(this.offerPrice), this.offerStatus};
 		return arr;
 	}
 	

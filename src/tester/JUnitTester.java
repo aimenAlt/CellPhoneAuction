@@ -3,11 +3,11 @@ package tester;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
-import databaseAccess.DatabaseAccess;
+import databaseAccess.LocalDBAccess;
 
 class JUnitTester {
 	
-	public static DatabaseAccess DBjUnit = new DatabaseAccess("./src/tester/jDB_file.txt");
+	public static LocalDBAccess DBjUnit = new LocalDBAccess("./src/tester/jDB_file.txt");
 
 	@Test
 	void addData() {

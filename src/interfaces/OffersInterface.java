@@ -7,10 +7,10 @@ import offers.OfferItem;
 
 public interface OffersInterface {
 	
-	HashMap<Integer, OfferItem> getAllOffers();
+	HashMap<String, OfferItem> getAllOffers();
 	OfferItem getSingleOffer(String offerId);
-	ArrayList<OfferItem> getCustomerOffers(String customerId);
-	OfferItem addOffer (String offerId, String lotId, double offerPrice);
+	ArrayList<OfferItem> getClientOffers(String clientId);
+	OfferItem addOffer (String offerId, String lotId, String clientId, double offerPrice);
 	void deleteOffer(String offerId);
 	void deleteOffersOfLot(String lotId);
 	void updateOfferPrice(String offerId, double offerPrice);

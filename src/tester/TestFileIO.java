@@ -2,13 +2,13 @@ package tester;
 
 import java.util.Scanner;
 
-import databaseAccess.DatabaseAccess;
+import databaseAccess.LocalDBAccess;
 
 public class TestFileIO {
 
 	public static void main(String[] args) { // USE JUnit testing to test the filIO 
 		// TODO Auto-generated method stub
-		DatabaseAccess DBTest = new DatabaseAccess("./src/tester/test_file.txt");
+		LocalDBAccess DBTest = new LocalDBAccess("./src/tester/test_file.txt");
 		Scanner scan = new Scanner(System.in);
 		int ox = 1;
 		while(ox > 0) {
@@ -35,7 +35,7 @@ public class TestFileIO {
 		
 	}
 	
-	public static void printDBContents(DatabaseAccess out) {
+	public static void printDBContents(LocalDBAccess out) {
 		System.out.println("___________________");
 		out.getDBMap().forEach((key, val) -> System.out.println(val[0] + " | " + val[1] + " | " + val[2]));
 		System.out.println("___________________");

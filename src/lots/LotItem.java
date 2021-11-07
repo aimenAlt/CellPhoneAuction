@@ -3,32 +3,32 @@ package lots;
 import date.Date;
 
 public class LotItem {
-	private String lotId = "";
+	private String lotID = "";
 	private String description = "";
 	private double askingPrice = 0.0;
 	private Date endDate;
 	private String lotStatus = "";
 	
-	public LotItem(String lotId, String description, double askingPrice,
+	public LotItem(String lotID, String description, double askingPrice,
 				   Date endDate) {
-		this.lotId = lotId;
+		this.lotID = lotID;
 		this.description = description;
 		this.askingPrice = askingPrice;
 		this.endDate = endDate;
 		this.lotStatus = "unpublished";
 	}
 	
-	public LotItem(String lotId, String description, double askingPrice,
+	public LotItem(String lotID, String description, double askingPrice,
 			   Date endDate, String lotStatus) {
-	this.lotId = lotId;
+	this.lotID = lotID;
 	this.description = description;
 	this.askingPrice = askingPrice;
 	this.endDate = endDate;
 	this.lotStatus = lotStatus;
 }
 	//Get
-	public String getLotId() {
-		return this.lotId;
+	public String getLotID() {
+		return this.lotID;
 	}
 	
 	public String getDescription() {
@@ -66,5 +66,11 @@ public class LotItem {
 		this.lotStatus = newStatus;
 		return this.lotStatus;
 	}
+	
+	public String[] toStringArr() {
+		String[] arr = {this.lotID, this.description, Double.toString(this.askingPrice), this.endDate.toString(), this.lotStatus};
+		return arr;
+	}
+
 	
 }
