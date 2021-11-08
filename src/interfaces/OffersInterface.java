@@ -7,18 +7,18 @@ import offers.OfferItem;
 
 public interface OffersInterface {
 	
-	HashMap<String, OfferItem> getAllOffers();
-	OfferItem getSingleOffer(String offerId);
-	ArrayList<OfferItem> getClientOffers(String clientId);
-	OfferItem addOffer (String offerId, String lotId, String clientId, double offerPrice);
-	void deleteOffer(String offerId);
-	void deleteOffersOfLot(String lotId);
-	void updateOfferPrice(String offerId, double offerPrice);
-	void pendOffer(String offerId);
-	void rejectOffer(String offerId);
-	void rejectAllLotOffers(String lotId);
-	void rejectAllLotOffers(String lotId, String offerId);
-	void acceptOffer(String offerId);
+	HashMap<Integer, OfferItem> getAllOffers();
+	OfferItem getSingleOffer(int offerID);
+	ArrayList<OfferItem> getClientOffers(int clientID);
+	OfferItem addOffer (int offerID, int lotId, int clientID, double offerPrice);
+	void deleteOffer(int offerID);
+	void deleteOffersOfLot(int lotId);
+	void updateOfferPrice(int offerID, double offerPrice);
+	void pendOffer(int offerID);
+	void rejectOffer(int offerID);
+	void rejectAllLotOffers(int lotId);
+	void rejectAllLotOffers(int lotId, int offerID);
+	void acceptOffer(int offerID);
 	
 	
 }

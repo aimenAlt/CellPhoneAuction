@@ -7,15 +7,15 @@ import lots.LotItem;
 
 public interface LotsInterface {
 	
-	HashMap<String, LotItem> getAllLots();
-	LotItem getSingleLot(String LotId);
-	LotItem addLot (String lotId, String lotDescription, double askingPrice, Date endDate);
-	void deleteLot(String lotId);
-	void updateLotPrice(String offerId, double askingPrice);
-	void unpublishLot(String lodId);
-	void openLot(String lotId);
-	void closeLot(String lotId);
-	void endLot(String lotId);
+	HashMap<Integer, LotItem> getAllLots();
+	LotItem getSingleLot(int lotID);
+	LotItem addLot (int lotID, String lotDescription, double askingPrice, Date endDate);
+	void deleteLot(int lotID);
+	void updateLotPrice(int lotID, double askingPrice);
+	void unpublishLot(int lotID);
+	void openLot(int lotID);
+	void closeLot(int lotID);
+	void endLot(int lotID);
 
 
 }

@@ -1,5 +1,5 @@
 package userServices;
 
-public class ManagerServices {
+public class ManagerServices extends EmployeeServices {
 
 }

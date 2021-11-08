@@ -4,17 +4,17 @@ import date.Date;
 import offers.OfferItem;
 
 public class OrderItem {
-	private String orderID = null;
-	private String clientID = null;
-	private String lotID = null;
-	private String offerID = null;
+	private int orderID = -1;
+	private int clientID = -1;
+	private int lotID = -1;
+	private int offerID = -1;
 	private String status = null;
 	private double purchasePrice = -1;
 	private double balance = -1;
 	private Date sellDate = null;
 	
 	//Constructor for when a new instance is created from an offer.
-	public OrderItem(String orderID, OfferItem offer, double balance, Date sellDate) {
+	public OrderItem(int orderID, OfferItem offer, double balance, Date sellDate) {
 		this.orderID = orderID;
 		this.clientID = offer.getClientID();
 		this.lotID = offer.getLotID();
@@ -24,7 +24,7 @@ public class OrderItem {
 		this.sellDate = sellDate;
 	}
 	//Constructor for when instance created from database data.
-	public OrderItem(String orderID, String clientID, String lotID, String offerID, double purchasePrice, double balance, Date sellDate) {
+	public OrderItem(int orderID, int clientID, int lotID, int offerID, double purchasePrice, double balance, Date sellDate) {
 		this.orderID = orderID;
 		this.clientID = clientID;
 		this.lotID = lotID;
@@ -34,19 +34,19 @@ public class OrderItem {
 		this.sellDate = sellDate;
 	}
 	
-	public String getOrderID() {
+	public int getOrderID() {
 		return this.orderID;
 	}
 	
-	public String getClientID() {
+	public int getClientID() {
 		return this.clientID;
 	}
 	
-	public String getlotID() {
+	public int getlotID() {
 		return this.lotID;
 	}
 	
-	public String getOfferID() {
+	public int getOfferID() {
 		return this.offerID;
 	}
 	
