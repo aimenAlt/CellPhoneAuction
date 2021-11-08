@@ -115,23 +115,23 @@ public class LotsTable {
 
 	//deleteLot - undone
 	public static void deleteLot() throws ApplicationException {
-//		int newID = -1;
-		Connection conn = PostgreSQLAccess.makeConnection();
-		PreparedStatement stmt;
-		String query = "";
-		
-		try {
-			stmt = conn.prepareStatement(query);
-			
-			ResultSet results = stmt.executeQuery();
-			if(results.next()) {
-				
-			}
-		} catch (SQLException e) {
-			throw new ApplicationException(e.getMessage());
-		}
-
-//		return newID;
+////		int newID = -1;
+//		Connection conn = PostgreSQLAccess.makeConnection();
+//		PreparedStatement stmt;
+//		String query = "";
+//		
+//		try {
+//			stmt = conn.prepareStatement(query);
+//			
+//			ResultSet results = stmt.executeQuery();
+//			if(results.next()) {
+//				
+//			}
+//		} catch (SQLException e) {
+//			throw new ApplicationException(e.getMessage());
+//		}
+//
+////		return newID;
 
 	}
 
