@@ -3,7 +3,7 @@ package offers;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import databaseAccess.LocalDBAccess;
+//import databaseAccess.LocalDBAccess;
 import interfaces.OffersInterface;
 
 public class Offers implements OffersInterface {

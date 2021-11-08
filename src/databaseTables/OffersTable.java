@@ -7,10 +7,8 @@ import java.sql.SQLException;
 import java.util.HashMap;
 
 import databaseAccess.PostgreSQLAccess;
-import date.Date;
 //import user.UserItem;
 import exceptions.ApplicationException;
-import offers.OfferItem;
 import offers.OfferItem;
 
 public class OffersTable {

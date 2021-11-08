@@ -1,7 +1,7 @@
 package salesOrders;
 
 import date.Date;
-import offers.OfferItem;
+//import offers.OfferItem;
 
 public class OrderItem {
 	private int orderID = -1;
@@ -14,21 +14,22 @@ public class OrderItem {
 	private Date sellDate = null;
 	
 	//Constructor for when a new instance is created from an offer.
-	public OrderItem(int orderID, OfferItem offer, double balance, Date sellDate) {
-		this.orderID = orderID;
-		this.clientID = offer.getClientID();
-		this.lotID = offer.getLotID();
-		this.offerID = offer.getOfferID();
-		this.purchasePrice = offer.getOfferPrice();
-		this.balance = balance;
-		this.sellDate = sellDate;
-	}
+//	public OrderItem(int orderID, OfferItem offer, double balance, Date sellDate) {
+//		this.orderID = orderID;
+//		this.clientID = offer.getClientID();
+//		this.lotID = offer.getLotID();
+//		this.offerID = offer.getOfferID();
+//		this.purchasePrice = offer.getOfferPrice();
+//		this.balance = balance;
+//		this.sellDate = sellDate;
+//	}
 	//Constructor for when instance created from database data.
-	public OrderItem(int orderID, int clientID, int lotID, int offerID, double purchasePrice, double balance, Date sellDate) {
+	public OrderItem(int orderID, int clientID, int lotID, int offerID, String status, double purchasePrice, double balance, Date sellDate) {
 		this.orderID = orderID;
 		this.clientID = clientID;
 		this.lotID = lotID;
 		this.offerID = offerID;
+		this.status = status;
 		this.purchasePrice = purchasePrice;
 		this.balance = balance;
 		this.sellDate = sellDate;

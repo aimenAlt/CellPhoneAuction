@@ -2,7 +2,7 @@ package lots;
 
 import java.util.HashMap;
 
-import databaseAccess.LocalDBAccess;
+//import databaseAccess.LocalDBAccess;
 
 import date.Date;
 import interfaces.LotsInterface;
