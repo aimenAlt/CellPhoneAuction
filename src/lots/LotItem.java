@@ -1,25 +1,33 @@
-package lotItem;
+package lots;
 
 import date.Date;
 
 public class LotItem {
-	private int lotId = 0;
+	private int lotID = -1;
 	private String description = "";
 	private double askingPrice = 0.0;
 	private Date endDate;
 	private String lotStatus = "";
 	
-	public LotItem(int lotId, String description, double askingPrice,
-				   Date endDate, String lotStatus) {
-		this.lotId = lotId;
+	public LotItem(int lotID, String description, double askingPrice,
+				   Date endDate) {
+		this.lotID = lotID;
 		this.description = description;
 		this.askingPrice = askingPrice;
 		this.endDate = endDate;
-		this.lotStatus = lotStatus;
+		this.lotStatus = "unpublished";
 	}
-	//Get
-	public int getLotId() {
-		return this.lotId;
+	
+	public LotItem(int lotID, String description, double askingPrice,
+			   Date endDate, String lotStatus) {
+	this.lotID = lotID;
+	this.description = description;
+	this.askingPrice = askingPrice;
+	this.endDate = endDate;
+	this.lotStatus = lotStatus;
+}
+	public int getLotID() {
+		return this.lotID;
 	}
 	
 	public String getDescription() {
@@ -44,7 +52,7 @@ public class LotItem {
 	}
 	
 	public double setAskingPrice(double newPrice) {
-		
+		this.askingPrice = newPrice;
 		return this.askingPrice;
 	}
 	
@@ -57,5 +65,11 @@ public class LotItem {
 		this.lotStatus = newStatus;
 		return this.lotStatus;
 	}
+	
+//	public String[] toStringArr() {
+//		String[] arr = {this.lotID, this.description, Double.toString(this.askingPrice), this.endDate.toString(), this.lotStatus};
+//		return arr;
+//	}
+
 	
 }
