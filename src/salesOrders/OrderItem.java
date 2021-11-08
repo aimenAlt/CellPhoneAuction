@@ -69,6 +69,9 @@ public class OrderItem {
 	
 	public void setBalance(double balance) {
 		this.balance = balance;
+		if (this.balance == 0) this.setStatus("fully paid");
+		else if (this.balance == this.purchasePrice) this.setStatus("unpaid");
+		else if (this.balance < this.purchasePrice) this.setStatus("partially paid");
 	}
 	
 	public void setStatus(String status) {

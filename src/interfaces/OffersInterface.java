@@ -8,7 +8,7 @@ import offers.OfferItem;
 public interface OffersInterface {
 	
 	HashMap<Integer, OfferItem> getAllOffers();
-	OfferItem getSingleOffer(int offerID);
+	OfferItem getOffer(int offerID);
 	ArrayList<OfferItem> getClientOffers(int clientID);
 	OfferItem addOffer (int offerID, int lotId, int clientID, double offerPrice);
 	void deleteOffer(int offerID);

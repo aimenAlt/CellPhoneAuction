@@ -158,4 +158,24 @@ public class OffersTable {
 
 	}
 	
+	public static void updateLotOffers(int lotID, String newStatus) throws ApplicationException {
+		Connection conn = PostgreSQLAccess.makeConnection();
+		PreparedStatement stmt;
+		String query = "UPDATE offers status=? WHERE lot_id=?";
+		
+		try {
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, newStatus);
+			stmt.setInt(2, lotID);
+			
+			ResultSet results = stmt.executeQuery();
+			if(results.next()) {
+				
+			}
+		} catch (SQLException e) {
+			throw new ApplicationException(e.getMessage());
+		}
+
+	}
+	
 }

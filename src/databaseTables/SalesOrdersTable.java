@@ -10,11 +10,12 @@ import databaseAccess.PostgreSQLAccess;
 import date.Date;
 //import user.UserItem;
 import exceptions.ApplicationException;
+import offers.OfferItem;
 import salesOrders.OrderItem;
 
 public class SalesOrdersTable {
 
-	public static HashMap<Integer, OrderItem> getAllOrders(int orderID) throws ApplicationException {
+	public static HashMap<Integer, OrderItem> getAllOrders() throws ApplicationException {
 		HashMap<Integer, OrderItem> offers = null;
 		Connection conn = PostgreSQLAccess.makeConnection();
 		PreparedStatement stmt;
@@ -88,9 +89,7 @@ public class SalesOrdersTable {
 	}
 
 	//AddLot - done
-	public static int addOrder(int clientID, int lotID, int offerID, 
-								String status, double purchasePrice, double balance, 
-								Date sellDate) throws ApplicationException {
+	public static int addOrder(OfferItem offer, String status, Date sellDate) throws ApplicationException {
 		int newID = -1;
 		Connection conn = PostgreSQLAccess.makeConnection();
 		PreparedStatement stmt;
@@ -99,12 +98,12 @@ public class SalesOrdersTable {
 		
 		try {
 			stmt = conn.prepareStatement(query);
-			stmt.setInt(1, clientID);
-			stmt.setInt(2, lotID);
-			stmt.setInt(3, offerID);
+			stmt.setInt(1, offer.getClientID());
+			stmt.setInt(2, offer.getLotID());
+			stmt.setInt(3, offer.getOfferID());
 			stmt.setString(4, status);
-			stmt.setDouble(5, purchasePrice);
-			stmt.setDouble(6, balance);
+			stmt.setDouble(5, offer.getOfferPrice());
+			stmt.setDouble(6, offer.getOfferPrice());
 			stmt.setString(7, sellDate.toString());
 			
 			ResultSet results = stmt.executeQuery();

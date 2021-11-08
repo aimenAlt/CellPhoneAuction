@@ -15,7 +15,7 @@ import lots.LotItem;
 public class LotsTable {
 	
 	//getAllLots - done
-	public static HashMap<Integer, LotItem> getAllLots(int lotID) throws ApplicationException {
+	public static HashMap<Integer, LotItem> getAllLots() throws ApplicationException {
 		HashMap<Integer, LotItem> lots = null;
 		Connection conn = PostgreSQLAccess.makeConnection();
 		PreparedStatement stmt;
@@ -23,6 +23,31 @@ public class LotsTable {
 		
 		try {
 			stmt = conn.prepareStatement(query);
+			ResultSet results = stmt.executeQuery();
+			lots = new HashMap<Integer, LotItem>();
+			while(results.next()) {
+				LotItem tempLot = new LotItem(results.getInt(1), 
+						results.getString(2), results.getDouble(3), 
+						new Date(results.getString(4)), results.getString(5));;
+				lots.put(tempLot.getLotID(), tempLot); 
+			}
+		} catch (SQLException e) {
+			throw new ApplicationException(e.getMessage());
+		}
+
+		return lots;
+
+	}
+
+	public static HashMap<Integer, LotItem> openLots() throws ApplicationException {
+		HashMap<Integer, LotItem> lots = null;
+		Connection conn = PostgreSQLAccess.makeConnection();
+		PreparedStatement stmt;
+		String query = "SELECT * FROM lots WHERE status=?";
+		
+		try {
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, "open");
 			ResultSet results = stmt.executeQuery();
 			lots = new HashMap<Integer, LotItem>();
 			while(results.next()) {
