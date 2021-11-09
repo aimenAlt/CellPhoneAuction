@@ -13,7 +13,7 @@ import exceptions.ApplicationException;
 public class UsersTable {
 	
 	public static HashMap<Integer, UserItem> getAllUsers() throws ApplicationException {
-		HashMap<Integer, UserItem> users = null;
+		HashMap<Integer, UserItem> users = new HashMap<Integer, UserItem>();
 		Connection conn = PostgreSQLAccess.makeConnection();
 		PreparedStatement stmt;
 		String query = "SELECT * FROM users";
@@ -106,9 +106,7 @@ public class UsersTable {
 		try {
 			stmt = conn.prepareStatement(query);
 			stmt.setInt(1, user.getUserID());
-			ResultSet results = stmt.executeQuery();
-			if (results.next()) {
-			}			
+			stmt.executeUpdate();
 		} catch(SQLException e) {
 			throw new ApplicationException(e.getMessage());
 		}

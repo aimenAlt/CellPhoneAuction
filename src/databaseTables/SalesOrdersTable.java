@@ -106,10 +106,10 @@ public class SalesOrdersTable {
 			stmt.setDouble(6, offer.getOfferPrice());
 			stmt.setString(7, sellDate.toString());
 			
-			ResultSet results = stmt.executeQuery();
-			if(results.next()) {
-				newID = results.getInt(1);
-			}
+			stmt.executeUpdate();
+//			if(results.next()) {
+//				newID = results.getInt(1);
+//			}
 		} catch (SQLException e) {
 			throw new ApplicationException(e.getMessage());
 		}
@@ -136,10 +136,10 @@ public class SalesOrdersTable {
 			stmt.setString(7, order.getSellDate().toString());
 
 			
-			ResultSet results = stmt.executeQuery();
-			if(results.next()) {
-				
-			}
+			stmt.executeUpdate();
+//			if(results.next()) {
+//				
+//			}
 		} catch (SQLException e) {
 			throw new ApplicationException(e.getMessage());
 		}

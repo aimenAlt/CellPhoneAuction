@@ -102,10 +102,10 @@ public class LotsTable {
 			stmt.setString(3, endDate.toString());
 			stmt.setString(4, lotStatus);
 			
-			ResultSet results = stmt.executeQuery();
-			if(results.next()) {
-				newID = results.getInt(1);
-			}
+			stmt.executeUpdate();
+//			if(results.next()) {
+//				newID = results.getInt(1);
+//			}
 		} catch (SQLException e) {
 			throw new ApplicationException(e.getMessage());
 		}
@@ -128,10 +128,11 @@ public class LotsTable {
 			stmt.setString(4, lot.getStatus());
 			stmt.setInt(5, lot.getLotID());
 			
-			ResultSet results = stmt.executeQuery();
-			if(results.next()) {
-				
-			}
+			
+			stmt.executeUpdate();
+//			if(results.next()) {
+//				
+//			}
 		} catch (SQLException e) {
 			throw new ApplicationException(e.getMessage());
 		}

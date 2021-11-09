@@ -54,11 +54,10 @@ public class Main {
 			if(option == 1) {
 				Client.client(user, scan);
 			} else if(option == 2) {
-				
+				Employee.employee(user, scan);
 			} else if(option == 3) {
-				
+				Employee.employee(user, scan);
 			} else outs("something wrong happend");
-			
 			outs("would you like to quit (or go back to sign in)? (enter 0 to quit)");
 			if(getInt() == 0) exit = true;
 		}

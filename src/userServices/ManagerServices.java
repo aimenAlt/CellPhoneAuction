@@ -18,6 +18,7 @@ public class ManagerServices extends EmployeeServices {
 
 	public ManagerServices(UserItem user) throws ApplicationException {
 		super(user);
+		this.refreshUsers();
 	}
 	
 	public HashMap<Integer, UserItem> getUsers() {

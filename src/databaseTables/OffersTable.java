@@ -41,7 +41,6 @@ public class OffersTable {
 		Connection conn = PostgreSQLAccess.makeConnection();
 		PreparedStatement stmt;
 		String query = "SELECT * FROM offers WHERE lot_id=?";
-		
 		try {
 			stmt = conn.prepareStatement(query);
 			stmt.setInt(1, lotID);
@@ -122,10 +121,10 @@ public class OffersTable {
 			stmt.setDouble(3, offerPrice);
 			stmt.setString(4, offerStatus);
 			
-			ResultSet results = stmt.executeQuery();
-			if(results.next()) {
-				newID = results.getInt(1);
-			}
+			stmt.executeUpdate();
+//			if(results.next()) {
+//				newID = results.getInt(1);
+//			}
 		} catch (SQLException e) {
 			throw new ApplicationException(e.getMessage());
 		}
@@ -148,10 +147,7 @@ public class OffersTable {
 			stmt.setString(4, offer.offerStatus());
 			stmt.setInt(5, offer.getLotID());
 			
-			ResultSet results = stmt.executeQuery();
-			if(results.next()) {
-				
-			}
+			stmt.executeQuery();
 		} catch (SQLException e) {
 			throw new ApplicationException(e.getMessage());
 		}
@@ -167,11 +163,7 @@ public class OffersTable {
 			stmt = conn.prepareStatement(query);
 			stmt.setString(1, newStatus);
 			stmt.setInt(2, lotID);
-			
-			ResultSet results = stmt.executeQuery();
-			if(results.next()) {
-				
-			}
+			stmt.executeUpdate();
 		} catch (SQLException e) {
 			throw new ApplicationException(e.getMessage());
 		}
