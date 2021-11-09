@@ -64,7 +64,7 @@ public class OffersTable {
 		HashMap<Integer, OfferItem> offers = null;
 		Connection conn = PostgreSQLAccess.makeConnection();
 		PreparedStatement stmt;
-		String query = "SELECT * FROM offers WHERE clientID=?";
+		String query = "SELECT * FROM offers WHERE client_id=?";
 		
 		try {
 			stmt = conn.prepareStatement(query);

@@ -10,26 +10,26 @@ import exceptions.ApplicationException;
 import lots.LotItem;
 import lots.Lots;
 import offers.OfferItem;
-import offers.Offers;
 import salesOrders.SalesOrders;
 import user.UserItem;
 
 public class EmployeeServices {
 	
 	private UserItem user = null;
-//	private Offers offers = null;
 	private Lots lots = null;
-	private SalesOrders orders = null;
+	protected SalesOrders orders = null;
 
-//	private void refreshOffers() throws ApplicationException {
-//		this.offers = new Offers(OffersTable.offersOfLot());
-//	}
-	
 	private void refreshLots() throws ApplicationException {
 		this.lots = new Lots(LotsTable.getAllLots());
 	}
-	private void refreshOrders() throws ApplicationException {
+	protected void refreshOrders() throws ApplicationException {
 		this.orders = new SalesOrders(SalesOrdersTable.getAllOrders());
+	}
+	
+	public EmployeeServices(UserItem user) throws ApplicationException {
+		this.user = user;
+		this.refreshLots();
+		this.refreshOrders();
 	}
 	
 	//Get offers of lot
@@ -59,11 +59,9 @@ public class EmployeeServices {
 
 	}
 	//get all lots
-	public Lots getLots() {
-		return this.lots;
+	public HashMap<Integer, LotItem> getLots() {
+		return this.lots.getAllLots();
 	}
-	//get all orders
-		//for manager
 	
 	//Add new lot
 	public void addLot(String description, double askingPrice, Date endDate) throws ApplicationException {

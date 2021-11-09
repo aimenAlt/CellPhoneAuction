@@ -43,7 +43,7 @@ public class SalesOrdersTable {
 		HashMap<Integer, OrderItem> offers = null;
 		Connection conn = PostgreSQLAccess.makeConnection();
 		PreparedStatement stmt;
-		String query = "SELECT * FROM sales_orders WHERE user_id=?";
+		String query = "SELECT * FROM sales_orders WHERE client_id=?";
 		
 		try {
 			stmt = conn.prepareStatement(query);

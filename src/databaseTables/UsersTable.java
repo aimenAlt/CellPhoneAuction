@@ -4,12 +4,32 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 
 import databaseAccess.PostgreSQLAccess;
 import user.UserItem;
 import exceptions.ApplicationException;
 
 public class UsersTable {
+	
+	public static HashMap<Integer, UserItem> getAllUsers() throws ApplicationException {
+		HashMap<Integer, UserItem> users = null;
+		Connection conn = PostgreSQLAccess.makeConnection();
+		PreparedStatement stmt;
+		String query = "SELECT * FROM users";
+
+		try {
+			stmt = conn.prepareStatement(query);
+			ResultSet results = stmt.executeQuery();
+			while (results.next()) {
+				UserItem tempUser = new UserItem(results.getInt(1), results.getString(2), results.getString(3), results.getString(4));
+				users.put(tempUser.getUserID(), tempUser);
+			}			
+		} catch(SQLException e) {
+			throw new ApplicationException(e.getMessage());
+		}
+		return users;
+	}
 	
 	public static UserItem getUserInfo(int userID) throws ApplicationException {
 		UserItem user = null;
@@ -78,8 +98,21 @@ public class UsersTable {
 
 	}
 	
-	public static void removeUser() {
-		
+	public static void removeUser(UserItem user) throws ApplicationException {
+		Connection conn = PostgreSQLAccess.makeConnection();
+		PreparedStatement stmt;
+		String query = "DELETE FROM users WHERE id=?";
+
+		try {
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(1, user.getUserID());
+			ResultSet results = stmt.executeQuery();
+			if (results.next()) {
+			}			
+		} catch(SQLException e) {
+			throw new ApplicationException(e.getMessage());
+		}
+
 	}
 	
 }

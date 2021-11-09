@@ -1,12 +1,16 @@
 package userServices;
 
 import exceptions.ApplicationException;
+import lots.LotItem;
 import lots.Lots;
 import offers.OfferItem;
 import offers.Offers;
 import salesOrders.OrderItem;
 import salesOrders.SalesOrders;
 import user.UserItem;
+
+import java.util.HashMap;
+
 import databaseTables.LotsTable;
 import databaseTables.OffersTable;
 import databaseTables.SalesOrdersTable;
@@ -37,26 +41,29 @@ public class ClientServices {
 	}
 	
 	//Get Lots
-	public Lots getAvailableLots() {
-		return this.lots;
+	public HashMap<Integer, LotItem> getAvailableLots() {
+		return this.lots.getAllLots();
 	}
 	//Show Offers
-	public Offers getClientOffers() {
-		return this.offers;
+	public HashMap<Integer, OfferItem> getClientOffers() {
+		return this.offers.getAllOffers();
 	}
 	
 	//show sales orders
-	public SalesOrders getClientOrders() {
-		return this.orders;
+	public HashMap<Integer, OrderItem> getClientOrders() {
+		return this.orders.getAllOrders();
 	}
 	//make new offer
 	public void newOffer(int lotID, int clientID, double offerPrice) throws ApplicationException {
-		int id = OffersTable.addOffer(lotID, clientID, offerPrice, "unpublished");
+		OffersTable.addOffer(lotID, clientID, offerPrice, "unpublished");
 		this.refreshOffers();
 	}
 	//withdraw offer
-	public void withdrawOffer(int offerID) {
+	public void withdrawOffer(int offerID) throws ApplicationException {
 		OfferItem tempOffer = this.offers.getOffer(offerID);
+		tempOffer.setOfferStatus("withdrawn");
+		OffersTable.updateOffer(tempOffer);
+		this.refreshOffers();
 	}
 	//make payment on sales order
 	public double pay(int orderID, double amount) throws ApplicationException {
