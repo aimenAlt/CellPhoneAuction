@@ -118,7 +118,7 @@ public class LotsTable {
 	public static void updateLot(LotItem lot) throws ApplicationException {
 		Connection conn = PostgreSQLAccess.makeConnection();
 		PreparedStatement stmt;
-		String query = "UPDATE lots description=?, asking_price=?, end_date=?, status=? WHERE id=?";
+		String query = "UPDATE lots SET description=?, asking_price=?, end_date=?, status=? WHERE id=?";
 		
 		try {
 			stmt = conn.prepareStatement(query);
@@ -140,7 +140,7 @@ public class LotsTable {
 	}
 
 	//deleteLot - undone
-	public static void deleteLot() throws ApplicationException {
+//	public static void deleteLot() throws ApplicationException {
 ////		int newID = -1;
 //		Connection conn = PostgreSQLAccess.makeConnection();
 //		PreparedStatement stmt;
@@ -159,7 +159,7 @@ public class LotsTable {
 //
 ////		return newID;
 
-	}
+//	}
 
 	
 }

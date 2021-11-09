@@ -122,7 +122,7 @@ public class SalesOrdersTable {
 	public static void updateOrder(OrderItem order) throws ApplicationException {
 		Connection conn = PostgreSQLAccess.makeConnection();
 		PreparedStatement stmt;
-		String query = 	"UPDATE sales_orders client_id=?, lot_id=?, offer_id=?, " +
+		String query = 	"UPDATE sales_orders SET client_id=?, lot_id=?, offer_id=?, " +
 						"status=?, purchase_price=?, balance=?, sell_date=? WHERE id=?";
 		
 		try {

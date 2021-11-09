@@ -12,7 +12,6 @@ import lots.LotItem;
 import offers.OfferItem;
 import salesOrders.OrderItem;
 import user.UserItem;
-import userServices.ClientServices;
 import userServices.EmployeeServices;
 import userServices.ManagerServices;
 
@@ -39,11 +38,11 @@ public class Employee {
 			if(input == 1) {
 				HashMap<Integer, LotItem> lots = employee.getLots();
 				outs("____________________________________");
-				outs("Lot ID \t\t | Description \t\t | Asking Price \t\t | End Date");
+				outs("Lot ID \t\t | Description \t\t | Asking Price \\t\\t | Status \t\t | End Date");
 				for(HashMap.Entry<Integer, LotItem> entry : lots.entrySet()) {
 					LotItem val = entry.getValue();
 					String output = val.getLotID() + "\t\t |" + val.getDescription() 
-									+ "\t |" + val.getAskingPrice() + "\t\t |" + val.getEndDate();
+									+ "\t |" + val.getAskingPrice() + "\t\t |" + val.getStatus() + "\t\t |" + val.getEndDate();
 					outs(output);
 				}
 				outs("____________________________________");
@@ -54,6 +53,7 @@ public class Employee {
 					outs("2 - Cancel Lot");
 					outs("3 - Change Asking Price of Lot");
 					outs("4 - Change Description of Lot");
+					outs("5 - Open Lot");
 					outs("0 - main menu");
 					option = getInt(scan);
 					// OPTION 1 ___________________________________________________________
@@ -138,6 +138,14 @@ public class Employee {
 							outs("Description changed");
 						}
 
+					} else if (option == 5) {
+						outs("input the Lot's ID: ");
+						input = getInt(scan);
+						LotItem lot = lots.get(input);
+						if (lot != null) {
+							employee.openLot(lot);
+							outs("Lot Opened!");
+						}
 					} else if (option == 0) {
 						continue;
 					} else {
@@ -151,10 +159,10 @@ public class Employee {
 				outs("Describe the Lot:");
 				String desc = getString(scan);
 				outs("Whats the asking price? (input price including cents)");
-				Double askingPrice = getDouble(scan);
+				double askingPrice = getDouble(scan);
 				outs("After how many days do you want the auction on this Lot to end?");
 				int days = getInt(scan);
-				employee.addLot(desc, input, addDaysToDate(currentDate, days));
+				employee.addLot(desc, askingPrice, addDaysToDate(currentDate, days));
 				outs("Lot Added");
 
 			} else if(input == 3 && user.getUserType().equals("manager")) { // manager only - show users

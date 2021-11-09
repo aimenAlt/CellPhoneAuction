@@ -137,7 +137,7 @@ public class OffersTable {
 	public static void updateOffer(OfferItem offer) throws ApplicationException {
 		Connection conn = PostgreSQLAccess.makeConnection();
 		PreparedStatement stmt;
-		String query = "UPDATE offers lot_id=?, client_id=?, offer_price=?, status=? WHERE id=?";
+		String query = "UPDATE offers SET lot_id=?, client_id=?, offer_price=?, status=? WHERE id=?";
 		
 		try {
 			stmt = conn.prepareStatement(query);
@@ -157,7 +157,7 @@ public class OffersTable {
 	public static void updateLotOffers(int lotID, String newStatus) throws ApplicationException {
 		Connection conn = PostgreSQLAccess.makeConnection();
 		PreparedStatement stmt;
-		String query = "UPDATE offers status=? WHERE lot_id=?";
+		String query = "UPDATE offers SET status=? WHERE lot_id=?";
 		
 		try {
 			stmt = conn.prepareStatement(query);
