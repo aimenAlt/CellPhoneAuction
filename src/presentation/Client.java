@@ -1,5 +1,7 @@
 package presentation;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -24,7 +26,7 @@ public class Client {
 			
 			int input = getInt(scan);
 			if(input == 1) {
-				outs("");
+				outs("_________________________________________________________________");
 				HashMap<Integer, LotItem> lots = client.getAvailableLots();
 				outs("Lot ID \t\t | Description \t\t | Asking Price \t\t | End Date");
 				for(HashMap.Entry<Integer, LotItem> entry : lots.entrySet()) {
@@ -33,7 +35,7 @@ public class Client {
 									+ "\t |" + val.getAskingPrice() + "\t\t |" + val.getEndDate();
 					outs(output);
 				}
-				outs("");
+				outs("_________________________________________________________________");
 				option = -1;
 				while(option != 0) {
 					outs("What would you like to do?");
@@ -59,7 +61,7 @@ public class Client {
 				}
 			} else if(input == 2) {
 				HashMap<Integer, OfferItem> offers = client.getClientOffers();
-				outs("");
+				outs("_________________________________________________________________");
 				outs("Offer ID \t\t | Lot ID \t\t | Offer Price \t\t | Status");
 				for (HashMap.Entry<Integer, OfferItem> entry : offers.entrySet()) {
 					OfferItem val = entry.getValue();
@@ -67,7 +69,7 @@ public class Client {
 									+ "\t |" + val.getOfferPrice() + "\t\t |" + val.offerStatus();
 					outs(output);
 				}
-				outs("");
+				outs("_________________________________________________________________");
 				option = -1;
 				while(option != 0) {
 					outs("What would you like to do?");
@@ -96,8 +98,8 @@ public class Client {
 
 			} else if(input == 3) {
 				HashMap<Integer, OrderItem> orders = client.getClientOrders();
-				outs("");
-				outs("Offer ID \t\t | Lot ID \t\t | Offer Price \t\t | Status");
+				outs("_________________________________________________________________");
+				outs("Order ID \t\t | Status \t\t | Purchase Price \t\t | Balance \t\t | Purchase Date");
 				for (HashMap.Entry<Integer, OrderItem> entry : orders.entrySet()) {
 					OrderItem val = entry.getValue();
 					String output = val.getOrderID() + "\t\t |" + val.getStatus()
@@ -105,7 +107,7 @@ public class Client {
 									val.getBalance() + "\t\t |" + val.getSellDate();
 					outs(output);
 				}
-				outs("");
+				outs("_________________________________________________________________");
 				option = -1;
 				while(option != 0) {
 					outs("What would you like to do?");
@@ -119,6 +121,10 @@ public class Client {
 						if (order != null) {
 							option = -1;
 							double weeklyAmount = order.getPurchasePrice() / 26.0;
+
+							weeklyAmount = BigDecimal.valueOf(weeklyAmount)
+							    .setScale(2, RoundingMode.HALF_UP)
+							    .doubleValue();
 							outs("How much would you like to pay?");
 							outs("1 - Weekly payment amount (over 6 months): " + weeklyAmount);
 							outs("2 - Different Ammount");

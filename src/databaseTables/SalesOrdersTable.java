@@ -134,7 +134,7 @@ public class SalesOrdersTable {
 			stmt.setDouble(5, order.getPurchasePrice());
 			stmt.setDouble(6, order.getBalance());
 			stmt.setString(7, order.getSellDate().toString());
-
+			stmt.setInt(8, order.getOrderID());
 			
 			stmt.executeUpdate();
 //			if(results.next()) {

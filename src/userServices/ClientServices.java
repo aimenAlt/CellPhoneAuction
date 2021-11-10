@@ -55,13 +55,14 @@ public class ClientServices {
 	}
 	//make new offer
 	public void newOffer(int lotID, int clientID, double offerPrice) throws ApplicationException {
-		OffersTable.addOffer(lotID, clientID, offerPrice, "unpublished");
+		OffersTable.addOffer(lotID, clientID, offerPrice, "pending");
 		this.refreshOffers();
 	}
 	//withdraw offer
 	public void withdrawOffer(int offerID) throws ApplicationException {
 		OfferItem tempOffer = this.offers.getOffer(offerID);
 		tempOffer.setOfferStatus("withdrawn");
+		System.out.println(tempOffer.offerStatus());
 		OffersTable.updateOffer(tempOffer);
 		this.refreshOffers();
 	}

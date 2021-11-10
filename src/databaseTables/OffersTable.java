@@ -145,9 +145,9 @@ public class OffersTable {
 			stmt.setInt(2, offer.getClientID());
 			stmt.setDouble(3, offer.getOfferPrice());
 			stmt.setString(4, offer.offerStatus());
-			stmt.setInt(5, offer.getLotID());
+			stmt.setInt(5, offer.getOfferID());
 			
-			stmt.executeQuery();
+			stmt.executeUpdate();
 		} catch (SQLException e) {
 			throw new ApplicationException(e.getMessage());
 		}

@@ -125,6 +125,7 @@ public class Employee {
 						input = getInt(scan);
 						LotItem lot = lots.get(input);
 						if (lot != null) {
+							outs("Enter New Asking Price");
 							employee.changeAskingPrice(lot, getDouble(scan));
 							outs("Lot Asking Price Changed!");
 						}
@@ -134,6 +135,7 @@ public class Employee {
 						input = getInt(scan);
 						LotItem lot = lots.get(input);
 						if (lot != null) {
+							outs("Enter New Decription");
 							employee.changeDescription(lot, getString(scan));
 							outs("Description changed");
 						}
@@ -254,7 +256,6 @@ public class Employee {
 	
 	public static double getDouble(Scanner scan) {
 		double number = Double.parseDouble(scan.nextLine());
-		System.out.println("Double is: " + number);
 		return number;
 	}
 	
