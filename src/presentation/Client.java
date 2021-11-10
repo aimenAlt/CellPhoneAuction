@@ -127,13 +127,14 @@ public class Client {
 							    .doubleValue();
 							outs("How much would you like to pay?");
 							outs("1 - Weekly payment amount (over 6 months): " + weeklyAmount);
-							outs("2 - Different Ammount");
+							outs("2 - Different Amount");
 							option = getInt(scan);
 							if(option == 1) {
 								if (weeklyAmount > order.getBalance()) weeklyAmount = order.getBalance();
 								client.pay(order.getOrderID(), weeklyAmount);
 								outs("A payment with the amount of " + weeklyAmount + " has been recieved");
 							} else if(option == 2) {
+								outs("Enter the amount you want to pay:");
 								double inputtedAmount = getDouble(scan);
 								if (inputtedAmount > order.getBalance()) weeklyAmount = order.getBalance();
 								else if (inputtedAmount < 0) {
