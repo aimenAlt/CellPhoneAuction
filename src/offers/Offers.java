@@ -3,7 +3,7 @@ package offers;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import databaseAccess.LocalDBAccess;
+//import databaseAccess.LocalDBAccess;
 import interfaces.OffersInterface;
 
 public class Offers implements OffersInterface {
@@ -12,11 +12,15 @@ public class Offers implements OffersInterface {
 //	private String fileAddress = "../tempDatabase/offers_file.txt";
 //	private LocalDBAccess localDB = null;
 	
-	public Offers() {
-//		this.localDB = new LocalDBAccess(fileAddress);
-		this.offers = new HashMap <Integer, OfferItem>();
-//		this.getAllDBOffers();
+	public Offers(HashMap <Integer, OfferItem> offers) {
+		this.offers = offers;
 	}
+	
+	public Offers() {
+		this.offers = new HashMap<Integer, OfferItem>();
+	}
+	
+	
 
 	@Override
 	public HashMap<Integer, OfferItem> getAllOffers() {
@@ -24,7 +28,7 @@ public class Offers implements OffersInterface {
 	}
 
 	@Override
-	public OfferItem getSingleOffer(int offerId) {
+	public OfferItem getOffer(int offerId) {
 		return this.offers.get(offerId);
 	}
 

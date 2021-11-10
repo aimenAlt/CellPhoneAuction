@@ -15,7 +15,7 @@ import lots.LotItem;
 public class LotsTable {
 	
 	//getAllLots - done
-	public static HashMap<Integer, LotItem> getAllLots(int lotID) throws ApplicationException {
+	public static HashMap<Integer, LotItem> getAllLots() throws ApplicationException {
 		HashMap<Integer, LotItem> lots = null;
 		Connection conn = PostgreSQLAccess.makeConnection();
 		PreparedStatement stmt;
@@ -23,6 +23,31 @@ public class LotsTable {
 		
 		try {
 			stmt = conn.prepareStatement(query);
+			ResultSet results = stmt.executeQuery();
+			lots = new HashMap<Integer, LotItem>();
+			while(results.next()) {
+				LotItem tempLot = new LotItem(results.getInt(1), 
+						results.getString(2), results.getDouble(3), 
+						new Date(results.getString(4)), results.getString(5));;
+				lots.put(tempLot.getLotID(), tempLot); 
+			}
+		} catch (SQLException e) {
+			throw new ApplicationException(e.getMessage());
+		}
+
+		return lots;
+
+	}
+
+	public static HashMap<Integer, LotItem> openLots() throws ApplicationException {
+		HashMap<Integer, LotItem> lots = null;
+		Connection conn = PostgreSQLAccess.makeConnection();
+		PreparedStatement stmt;
+		String query = "SELECT * FROM lots WHERE status=?";
+		
+		try {
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, "open");
 			ResultSet results = stmt.executeQuery();
 			lots = new HashMap<Integer, LotItem>();
 			while(results.next()) {
@@ -77,10 +102,10 @@ public class LotsTable {
 			stmt.setString(3, endDate.toString());
 			stmt.setString(4, lotStatus);
 			
-			ResultSet results = stmt.executeQuery();
-			if(results.next()) {
-				newID = results.getInt(1);
-			}
+			stmt.executeUpdate();
+//			if(results.next()) {
+//				newID = results.getInt(1);
+//			}
 		} catch (SQLException e) {
 			throw new ApplicationException(e.getMessage());
 		}
@@ -93,7 +118,7 @@ public class LotsTable {
 	public static void updateLot(LotItem lot) throws ApplicationException {
 		Connection conn = PostgreSQLAccess.makeConnection();
 		PreparedStatement stmt;
-		String query = "UPDATE lots description=?, asking_price=?, end_date=?, status=? WHERE id=?";
+		String query = "UPDATE lots SET description=?, asking_price=?, end_date=?, status=? WHERE id=?";
 		
 		try {
 			stmt = conn.prepareStatement(query);
@@ -103,10 +128,11 @@ public class LotsTable {
 			stmt.setString(4, lot.getStatus());
 			stmt.setInt(5, lot.getLotID());
 			
-			ResultSet results = stmt.executeQuery();
-			if(results.next()) {
-				
-			}
+			
+			stmt.executeUpdate();
+//			if(results.next()) {
+//				
+//			}
 		} catch (SQLException e) {
 			throw new ApplicationException(e.getMessage());
 		}
@@ -114,26 +140,26 @@ public class LotsTable {
 	}
 
 	//deleteLot - undone
-	public static void deleteLot() throws ApplicationException {
-//		int newID = -1;
-		Connection conn = PostgreSQLAccess.makeConnection();
-		PreparedStatement stmt;
-		String query = "";
-		
-		try {
-			stmt = conn.prepareStatement(query);
-			
-			ResultSet results = stmt.executeQuery();
-			if(results.next()) {
-				
-			}
-		} catch (SQLException e) {
-			throw new ApplicationException(e.getMessage());
-		}
+//	public static void deleteLot() throws ApplicationException {
+////		int newID = -1;
+//		Connection conn = PostgreSQLAccess.makeConnection();
+//		PreparedStatement stmt;
+//		String query = "";
+//		
+//		try {
+//			stmt = conn.prepareStatement(query);
+//			
+//			ResultSet results = stmt.executeQuery();
+//			if(results.next()) {
+//				
+//			}
+//		} catch (SQLException e) {
+//			throw new ApplicationException(e.getMessage());
+//		}
+//
+////		return newID;
 
-//		return newID;
-
-	}
+//	}
 
 	
 }

@@ -9,6 +9,10 @@ public class SalesOrders {
 		this.salesOrders = new HashMap<Integer, OrderItem>();
 	}
 	
+	public SalesOrders(HashMap<Integer, OrderItem> orders) {
+		this.salesOrders = orders;
+	}
+	
 	public void addOrder(OrderItem newOrder) {
 		this.salesOrders.put(newOrder.getOrderID(), newOrder);
 	}

@@ -2,7 +2,7 @@ package lots;
 
 import java.util.HashMap;
 
-import databaseAccess.LocalDBAccess;
+//import databaseAccess.LocalDBAccess;
 
 import date.Date;
 import interfaces.LotsInterface;
@@ -15,11 +15,13 @@ public class Lots implements  LotsInterface{
 	
 	public Lots() {
 		this.lots = new HashMap<Integer, LotItem>();
-//		this.lotsDB = new LocalDBAccess(fileAddress); //Local Database 
-//		this.getAllDBLots();
 		
 	}
 
+	public Lots(HashMap<Integer, LotItem> lots) {
+		this.lots = lots;
+	}
+	
 	@Override
 	public HashMap<Integer, LotItem> getAllLots() {
 		return this.lots;
